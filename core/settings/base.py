@@ -99,3 +99,6 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'REST API with JWT Auth and Role-Based Access Control',
     'VERSION': '1.0.0',
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
