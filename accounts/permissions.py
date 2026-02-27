@@ -42,7 +42,7 @@ class IsReceptionist(BasePermission):
             request.user.role=="RECEPTIONIST"
         )
         
-class ISAdminOrDoctor(BasePermission):
+class IsAdminOrDoctor(BasePermission):
     message="You do't have permission. Admin or Doctor access required."
     
     def has_permission(self,request,view):
