@@ -34,7 +34,7 @@ class Appointment(models.Model):
         related_name='booked_appointments'
     )
     
-    appointment_date=models.DateTimeField()
+    appointment_date=models.DateField()
     appointment_time=models.TimeField()
     appointment_type=models.CharField(
         max_length=20,
@@ -50,7 +50,7 @@ class Appointment(models.Model):
     symptoms=models.TextField(blank=True, null=True)
     doctor_notes=models.TextField(blank=True, null=True)
     prescription=models.TextField(blank=True, null=True)
-    follow_up_date=models.DateTimeField(blank=True, null=True)
+    follow_up_date=models.DateField(blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True,null=True)
     updated_at=models.DateTimeField(auto_now=True,null=True)
     
