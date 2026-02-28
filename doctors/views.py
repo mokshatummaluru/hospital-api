@@ -7,6 +7,9 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from .models import DoctorProfile
 from .serializers import DoctorProfileSerializer, DoctorProfileCreateSerializer
 from accounts.permissions import IsAdmin, IsDoctor, IsAdminOrDoctor
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 
 class DoctorListView(generics.ListAPIView):
     queryset=DoctorProfile.objects.select_related('user').all()
@@ -17,6 +20,10 @@ class DoctorListView(generics.ListAPIView):
     search_fields=['user__first_name', 'user__last_name', 'specialization']
     ordering_fields=['consultation_fee', 'years_of_experience']
     ordering=['user__first_name']
+    
+    @method_decorator(cache_page(60 * 15))
+    def list(self,request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
     
 class DoctorDetailView(generics.RetrieveAPIView):
     queryset=DoctorProfile.objects.select_related('user').all()
