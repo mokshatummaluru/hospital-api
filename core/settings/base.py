@@ -153,3 +153,18 @@ CACHES={
 SESSION_ENGINE='django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS='default'
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Hospital Management API',
+    'DESCRIPTION': 'REST API with JWT Auth and Role-Based Access Control',
+    'VERSION': '1.0.0',
+    'SECURITY': [{'BearerAuth': []}],
+    'COMPONENTS': {
+        'securitySchemes': {
+            'BearerAuth': {
+                'type': 'http',
+                'scheme': 'bearer',
+                'bearerFormat': 'JWT',
+            }
+        }
+    },
+}
